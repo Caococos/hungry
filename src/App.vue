@@ -1,20 +1,26 @@
 <template>
   <div id="app">
-    <navbar></navbar>
+    <v-header/>
+    <main-nav-bar/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import NavBar from '@/components/common/navbar/Navbar'
+import Header from "@/components/content/header/Header";
+import MainNavBar from "@/components/content/mainNavBar/MainNavBar";
+
+import {getSellerData} from "@/network/home"
 
 export default {
   name: 'App',
   components: {
-    NavBar
+    MainNavBar,
+    'v-header': Header   //因为header本身就是HTML标签，这里去个别名才能让组件渲染出来
   }
 }
 </script>
 
 <style>
-  @import "assets/stylus/base.css";
+  @import "assets/css/index.css";
 </style>

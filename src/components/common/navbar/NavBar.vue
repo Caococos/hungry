@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-bar">
+  <div class="nav-bar" :style="{height: height +'px', lineHeight: height +'px'}">
     <div class="nav-left"><slot name="left"></slot></div>
     <div class="nav-center"><slot name="center"></slot></div>
     <div class="nav-right"><slot name="right"></slot></div>
@@ -8,7 +8,13 @@
 
 <script>
 export default {
-name: "NavBar"
+  name: "NavBar",
+  props: {
+    height: {
+      type: Number,
+      default: 44
+    }
+  }
 }
 </script>
 
@@ -21,7 +27,7 @@ name: "NavBar"
   /*top: 0;*/
   /*z-index: 10;*/
   display: flex;
-  height: 44px;
+  /*height: 44px;*/
   line-height: 44px;
   text-align: center;
   /*border-bottom: 1px solid #eee;*/
@@ -32,7 +38,7 @@ name: "NavBar"
   width: 60px;
 }
 
-.nav-center {
+.nav-bar div {
   flex: 1;
 }
 
