@@ -1,5 +1,10 @@
 <template>
-  <div class="icon">{{discountType}}</div>
+  <div class="icon" :style="{color: color,
+  backgroundColor: bgColor,
+  width: size + 'px',
+  height: size + 'px'}">
+    {{discountType}}
+  </div>
 </template>
 
 <script>
@@ -9,6 +14,16 @@ export default {
     type: {
       type: Number,
       default: -1
+    },
+    size: {
+      type: Number,
+      default: 14
+    }
+  },
+  data() {
+    return {
+      color: '#fff',
+      bgColor: '#f11313'
     }
   },
   computed: {
@@ -17,12 +32,18 @@ export default {
         case 0:
           return '减'
         case 1:
+          this.bgColor = '#018cc8'
           return '折'
         case 2:
+          this.bgColor = '#00b53a'
           return '特'
         case 3:
+          this.bgColor = '#8a0a82'
+          this.color = '#fff'
           return '票'
         case 4:
+          this.bgColor = '#fff'
+          this.color = '#03b43e'
           return '保'
       }
     }
@@ -34,13 +55,10 @@ export default {
   .icon {
     display: inline-block;
     margin-right: 4px;
-    width: 14px;
-    height: 14px;
-    padding: 1px;
+    line-height: 14px;
+    /*padding: 1px;*/
     border-radius: 2px;
     text-align: center;
-    background-color: #fff;
-    color: red;
     font-size: 10px;
   }
 

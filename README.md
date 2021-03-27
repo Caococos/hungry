@@ -1,19 +1,26 @@
 # hungry
 
-## Project setup
+Vue.js high imitation ELEME Takeout
+
+### 环境要求
+
+需要NodeJS 8.12+ 环境
+
+#### 安装
+
 ```
-npm install
+$ git clone https://github.com/Caococos/hungry
+
+$ npm install
 ```
 
-### Compiles and hot-reloads for development
+### 运行
+
 ```
-npm run serve
+$ npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+此项目后台模拟数据默认挂载在运行服务器上，端口号默认为8080。如有不同之处，可以在network/request.js文件中修改。
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 功能特性
+

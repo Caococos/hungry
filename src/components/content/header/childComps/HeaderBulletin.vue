@@ -1,5 +1,5 @@
 <template>
-  <div class="bulletin-wrapper" v-if="Object.keys(bulletin).length !== 0">
+  <div class="bulletin-wrapper" v-if="Object.keys(bulletin).length !== 0" @click="showDetail">
     <span class="title">公告</span>
     <span class="text">{{bulletin.bulletin}}</span>
     <i class="icon-keyboard_arrow_right"></i>
@@ -15,6 +15,11 @@ export default {
       default() {
         return {}   //检测是否有数据传过来，如果没有组件不会渲染
       }
+    }
+  },
+  methods: {
+    showDetail() {
+      this.$bus.$emit('showDetail')  //向Detail组件发送事件
     }
   }
 }

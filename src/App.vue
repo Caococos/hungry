@@ -2,7 +2,7 @@
   <div id="app">
     <v-header/>
     <main-nav-bar/>
-    <router-view></router-view>
+    <router-view/>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   name: 'App',
   components: {
     MainNavBar,
-    'v-header': Header   //因为header本身就是HTML标签，这里去个别名才能让组件渲染出来
+    'v-header': Header,   //因为header本身就是HTML标签，这里去个别名才能让组件渲染出来
   }
 }
 </script>

@@ -16,7 +16,7 @@
         <span>{{content.supports[0].description}}</span>
       </div>
     </div>
-    <div class="supper-count">
+    <div class="supper-count" @click="showDetail">
       <span class="support-text">{{SLength}}个</span>
       <i class="icon-keyboard_arrow_right"></i>
     </div>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Icon from "@/components/content/header/childComps/Icon";
+import Icon from "@/components/content/icon/Icon";
 export default {
   name: "HeaderContent",
   components: {
@@ -41,6 +41,11 @@ export default {
   computed: {
     SLength() {
       return this.content.supports.length
+    }
+  },
+  methods: {
+    showDetail() {
+      this.$bus.$emit('showDetail')
     }
   }
 }

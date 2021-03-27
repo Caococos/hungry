@@ -5,18 +5,22 @@
     <div class="background">
       <img :src="seller.avatar" alt="" width="100%" height="100%">
     </div>
+    <detail :seller="seller"/>
   </div>
 </template>
 
 <script>
 import HeaderContent from "@/components/content/header/childComps/HeaderContent";
 import HeaderBulletin from "@/components/content/header/childComps/HeaderBulletin";
+import Detail from "@/components/content/header/childComps/Detail";
+
 import {getSellerData} from "@/network/home";
 export default {
   name: "Header",
   components: {
     HeaderContent,
-    HeaderBulletin
+    HeaderBulletin,
+    Detail
   },
   data() {
     return {
@@ -26,7 +30,6 @@ export default {
   created() {
     getSellerData().then(res => {
       this.seller = res.data
-      console.log(res)
     })
   },
 }
@@ -35,6 +38,7 @@ export default {
 <style scoped>
   .header {
     position: relative;
+    overflow: hidden;
     background: rgba(7, 17, 27, 0.5);
     color: #fff;
     font-size: 14px;
