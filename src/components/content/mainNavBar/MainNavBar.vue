@@ -15,13 +15,13 @@ export default {
     tabClick(index) {
       switch (index) {
         case 0:
-          this.$router.replace('/goods')
+          this.$router.replace({name: 'goods'})
           break
         case 1:
-          this.$router.replace('/ratings')
+          this.$router.replace({name: 'ratings'})
           break
         case 2:
-          this.$router.replace('/seller')
+          this.$router.replace({name: 'seller'})
       }
 
     }

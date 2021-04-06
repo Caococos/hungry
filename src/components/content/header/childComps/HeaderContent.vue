@@ -12,7 +12,7 @@
         {{content.description}}/{{content.deliveryTime}}分钟送达
       </div>
       <div class="support">
-        <icon :type="content.supports[0].type"/>
+        <icon :type="content.supports[0].type" class="icon"/>
         <span>{{content.supports[0].description}}</span>
       </div>
     </div>
@@ -95,6 +95,8 @@ export default {
   }
 
   .support {
+    display: flex;
+    align-items: center;
     font-size: 10px;
   }
 
@@ -119,6 +121,10 @@ export default {
   .icon-keyboard_arrow_right {
     margin-left: 2px;
     vertical-align: middle;
+  }
+
+  .icon {
+    margin-right: 4px;
   }
 
 </style>

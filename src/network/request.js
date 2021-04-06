@@ -4,7 +4,7 @@ export function  request(config) {
   //创建实例
   const instance = axios.create({
     // 根路径
-    baseURL: 'http://localhost:8080/',
+    baseURL: 'http://192.168.137.1:8080/',
     timeout: 5000
   })
   instance.interceptors.request.use(config => {

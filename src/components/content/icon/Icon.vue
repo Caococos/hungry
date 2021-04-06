@@ -53,12 +53,11 @@ export default {
 
 <style scoped>
   .icon {
-    display: inline-block;
-    margin-right: 4px;
-    line-height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /*padding: 1px;*/
     border-radius: 2px;
-    text-align: center;
     font-size: 10px;
   }
 

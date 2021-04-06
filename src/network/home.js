@@ -16,3 +16,9 @@ export function getSellerData() {
     url: '/api/seller'
   })
 }
+// export class shopCart {
+//   constructor(seller, goods) {
+//     this.deliveryPrice = seller.deliveryPrice
+//     this.minPrice = seller.minPrice
+//   }
+// }

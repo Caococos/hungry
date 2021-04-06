@@ -3,7 +3,7 @@
   --color-text: rgb(77, 85, 93);
   --color-high-text: #ee3357;
   --color-tint: #a02f62;
-  --color-background: #f4f5f7;
+  --color-background: #fff;
   --font-size: 14px;
   --line-height: 1.5;
 }
@@ -58,11 +58,11 @@ li {
 
 /* border 0 是为了照顾低版本浏览器 如果图片外面包含了链接会有边框的问题 */
 
-img {
-  border: 0;
-  /* 取消图片底侧有空白缝隙的问题 */
-  vertical-align: middle;
-}
+/*img {*/
+/*  border: 0;*/
+/*  !* 取消图片底侧有空白缝隙的问题 *!*/
+/*  vertical-align: middle;*/
+/*}*/
 
 button {
   /* 当我们鼠标经过button    按钮的时候 ，鼠标变成小手 */
@@ -118,8 +118,4 @@ input {
   border: 0;
   font-size: .16rem;
   outline: none;
-}
-
-li {
-
 }

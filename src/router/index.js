@@ -1,9 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 //实现路由懒加载
+const Shop = () => import('@/views/shop/Shop')
 const Goods = () => import ('@/views/goods/Goods')
+const Detail = () => import('@/views/detail/Detail')
 const Ratings = () => import ('@/views/ratings/Ratings')
 const Seller = () => import ('@/views/seller/Seller')
+
+
+// 解决ElementUI导航栏中的vue-router在3.0版本以上重复点菜单报错问题
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 Vue.use(VueRouter)
 // 定义路由
@@ -12,21 +21,38 @@ Vue.use(VueRouter)
 // 或者，只是一个组件配置对象。
 const routes = [
   {
-    path: '',
-    redirect: '/goods'
+    path: '/',
+    redirect: '/shop'  //重定向
   },
   {
-    path: '/goods',
-    component: Goods
+    path: '/shop',
+    component: Shop,
+    name: 'shop',
+    children: [
+      {
+        path: 'goods',
+        component: Goods,
+        name: 'goods'
+      },
+
+      {
+        path: 'ratings',
+        component: Ratings,
+        name: 'ratings'
+      },
+      {
+        path: 'seller',
+        component: Seller,
+        name: 'seller',
+      }
+    ]
   },
   {
-    path: '/ratings',
-    component: Ratings
-  },
-  {
-    path: '/seller',
-    component: Seller
+    path: '/detail',
+    component: Detail,
+    name: 'detail',
   }
+
 ]
 //创建 router 实例，然后传 `routes` 配置
 const router = new VueRouter({

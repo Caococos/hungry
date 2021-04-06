@@ -37,7 +37,7 @@
 import Star from "@/components/content/star/Star";
 import Icon from "@/components/content/icon/Icon";
 export default {
-  name: "Detail",
+  name: "SellerDetail",
   components: {
     Star,
     Icon
@@ -73,7 +73,7 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 11;
     width: 100%;
     height: 100%;
     background: rgba(7, 17 ,27, 0.8);
@@ -108,6 +108,7 @@ export default {
     margin: -64px auto 0;
     clear: both;
     font-size: 32px;
+    color: rgba(255, 255, 255, .5);
   }
 
   .title {
@@ -129,6 +130,7 @@ export default {
   }
 
   .support-item {
+    display: flex;
     padding: 0 12px;
     margin-bottom: 12px;
   }

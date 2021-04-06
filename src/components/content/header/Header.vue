@@ -5,22 +5,25 @@
     <div class="background">
       <img :src="seller.avatar" alt="" width="100%" height="100%">
     </div>
-    <detail :seller="seller"/>
+    <seller-detail :seller="seller"/>
   </div>
 </template>
 
 <script>
+//  导入组件
 import HeaderContent from "@/components/content/header/childComps/HeaderContent";
 import HeaderBulletin from "@/components/content/header/childComps/HeaderBulletin";
-import Detail from "@/components/content/header/childComps/Detail";
+import SellerDetail from "@/components/content/header/childComps/SellerDetail";
 
+//  请求数据方法
 import {getSellerData} from "@/network/home";
+
 export default {
   name: "Header",
   components: {
     HeaderContent,
     HeaderBulletin,
-    Detail
+    SellerDetail
   },
   data() {
     return {
