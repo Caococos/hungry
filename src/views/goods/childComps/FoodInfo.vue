@@ -1,29 +1,30 @@
 <template>
   <div class="food-info" v-if="Object.keys(food).length !== 0">
-        <h1 class="title" ref="title">{{food.name}}</h1>
-        <ul>
-          <li class="food-item" v-for="(food, index) in food.foods" :key="index">
-            <div class="icon"><img :src="food.icon" alt="" ></div>
-            <div class="content">
-              <h2 class="name">{{food.name}}</h2>
-              <p  v-show="food.description" class="desc">{{food.description}}</p>
-              <div class="extra">
-                <span class="count">月售{{food.sellCount}}份</span>
-                <span>好评率{{food.rating}}</span>
-              </div>
-              <div class="price">
-                <span class="nowPrice">￥{{food.price}}</span>
-                <span class="oldPrice" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
-              </div>
-            </div>
-            <cart-control class="cart-control" :food="food"/>
-          </li>
-        </ul>
+    <h1 class="title" ref="title">{{food.name}}</h1>
+    <ul>
+      <li class="food-item" v-for="(food, index) in food.foods" :key="index">
+        <div class="icon"><img :src="food.icon" alt="" ></div>
+        <div class="content" @click="goToDetail(food)">
+          <h2 class="name">{{food.name}}</h2>
+          <p  v-show="food.description" class="desc">{{food.description}}</p>
+          <div class="extra">
+            <span class="count">月售{{food.sellCount}}份</span>
+            <span>好评率{{food.rating}}</span>
+          </div>
+          <div class="price">
+            <span class="nowPrice">￥{{food.price}}</span>
+            <span class="oldPrice" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
+          </div>
+        </div>
+        <cart-control class="cart-control" :food="food"/>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 import CartControl from "@/views/goods/childComps/CartControl";
+import {mapMutations} from "vuex";
 export default {
   name: "FoodInfo",
   components: {
@@ -35,6 +36,13 @@ export default {
       default() {}
     }
   },
+  methods: {
+    ...mapMutations(['toDetail']),
+    goToDetail(food) {
+      this.toDetail(food)
+      this.$router.push({name: 'detail'})
+    }
+  }
 }
 </script>
 

@@ -64,12 +64,6 @@ export function throttling(func, wait, immediate) {
 
 // 时间戳转日期
 export function formatDate(date, fmt) {
-  //1.获取年份
-  //y
-  //y+ -> 1个或者多个y
-  //y* -> 0个或者多个y
-  //y? -> 0个或者1个y
-  //上面的是正则表达式的规则
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
   }

@@ -36,25 +36,19 @@
 <script>
 import Star from "@/components/content/star/Star";
 import Icon from "@/components/content/icon/Icon";
+import {sellerData} from "@/common/mixin";
 export default {
   name: "SellerDetail",
   components: {
     Star,
     Icon
   },
-  props: {
-    seller: {
-      type: Object,
-      default() {
-        return {}
-      }
-    }
-  },
   data() {
     return {
       isShow: false
     }
   },
+  mixins: [sellerData],
   mounted() {
     this.$bus.$on('showDetail',  () => {
       this.isShow = true  //订阅总线发过来的事件，并展示Detail页面

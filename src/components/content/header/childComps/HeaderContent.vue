@@ -1,19 +1,19 @@
 <template>
-  <div class="content-wrapper" v-if="Object.keys(content).length !== 0">
+  <div class="content-wrapper" v-if="Object.keys(seller).length !== 0">
     <div class="avatar">
-      <img :src="content.avatar" alt="">
+      <img :src="seller.avatar" alt="">
     </div>
     <div class="content">
       <div class="title">
         <span class="brand">品牌</span>
-        <span class="name">{{content.name}}</span>
+        <span class="name">{{seller.name}}</span>
       </div>
       <div class="description">
-        {{content.description}}/{{content.deliveryTime}}分钟送达
+        {{seller.description}}/{{seller.deliveryTime}}分钟送达
       </div>
       <div class="support">
-        <icon :type="content.supports[0].type" class="icon"/>
-        <span>{{content.supports[0].description}}</span>
+        <icon :type="seller.supports[0].type" class="icon"/>
+        <span>{{seller.supports[0].description}}</span>
       </div>
     </div>
     <div class="supper-count" @click="showDetail">
@@ -25,22 +25,16 @@
 
 <script>
 import Icon from "@/components/content/icon/Icon";
+import {sellerData} from "@/common/mixin";
 export default {
   name: "HeaderContent",
   components: {
     Icon
   },
-  props: {
-    content: {
-      type: Object,
-      default() {
-        return {};   //检测是否有数据传过来，如果没有组件不会渲染
-      }
-    }
-  },
+  mixins: [sellerData],
   computed: {
     SLength() {
-      return this.content.supports.length
+      return this.seller.supports.length
     }
   },
   methods: {

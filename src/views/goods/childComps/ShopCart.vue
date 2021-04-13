@@ -9,7 +9,7 @@
         </div>
         <div class="content-center">
           <div class="price" :class="{'highlight-text': totalPrice> 0}">￥{{ totalPrice }}</div>
-          <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
+          <div class="desc">另需配送费￥{{seller.deliveryPrice}}元</div>
         </div>
         <div class="content-right" :class="{'highlight-pay': totalPrice >= 20}">
           <div class="pay">{{payDesc}}</div>
@@ -41,30 +41,20 @@ export default {
     return {
       fold: true,
       refresh: 0,
-      expand: false
-    }
-  },
-  props: {
-    deliveryPrice: {
-      type: Number,
-      default: 0
-    },
-    minPrice: {
-      type: Number,
-      default: 0
     }
   },
   computed: {
     ...mapState([
       "selectFood",
-      "dropBall"
+      "dropBall",
+      "seller"
       ]),
     ...mapGetters(['totalPrice', 'totalCount']),
     payDesc() {  //总价不同样式和信息不同
       if (this.totalPrice === 0) {
-        return `￥${this.minPrice}起送`;
-      } else if (this.totalPrice < this.minPrice) {
-        let diff = this.minPrice - this.totalPrice;
+        return `￥${this.seller.minPrice}起送`;
+      } else if (this.totalPrice < this.seller.minPrice) {
+        let diff = this.seller.minPrice - this.totalPrice;
         return `还差￥${diff}起送`;
       } else {
         return '去结算';

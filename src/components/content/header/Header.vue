@@ -1,11 +1,11 @@
 <template>
   <div class="header">
-    <header-content :content="seller"/>
-    <header-bulletin :bulletin="seller"/>
+    <header-content/>
+    <header-bulletin/>
     <div class="background">
       <img :src="seller.avatar" alt="" width="100%" height="100%">
     </div>
-    <seller-detail :seller="seller"/>
+    <seller-detail/>
   </div>
 </template>
 
@@ -15,8 +15,7 @@ import HeaderContent from "@/components/content/header/childComps/HeaderContent"
 import HeaderBulletin from "@/components/content/header/childComps/HeaderBulletin";
 import SellerDetail from "@/components/content/header/childComps/SellerDetail";
 
-//  请求数据方法
-import {getSellerData} from "@/network/home";
+import {sellerData} from "@/common/mixin";
 
 export default {
   name: "Header",
@@ -25,16 +24,7 @@ export default {
     HeaderBulletin,
     SellerDetail
   },
-  data() {
-    return {
-      seller: {}
-    }
-  },
-  created() {
-    getSellerData().then(res => {
-      this.seller = res.data
-    })
-  },
+  mixins: [sellerData]
 }
 </script>
 

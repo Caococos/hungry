@@ -1,22 +1,17 @@
 <template>
-  <div class="bulletin-wrapper" v-if="Object.keys(bulletin).length !== 0" @click="showDetail">
+  <div class="bulletin-wrapper" v-if="Object.keys(seller).length !== 0" @click="showDetail">
     <span class="title">公告</span>
-    <span class="text">{{bulletin.bulletin}}</span>
+    <span class="text">{{seller.bulletin}}</span>
     <i class="icon-keyboard_arrow_right"></i>
   </div>
 </template>
 
 <script>
+import {sellerData} from "@/common/mixin";
+
 export default {
   name: "HeaderBulletin",
-  props: {
-    bulletin: {
-      type: Object,
-      default() {
-        return {}   //检测是否有数据传过来，如果没有组件不会渲染
-      }
-    }
-  },
+  mixins: [sellerData],
   methods: {
     showDetail() {
       this.$bus.$emit('showDetail')  //向Detail组件发送事件

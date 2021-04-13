@@ -18,25 +18,14 @@
 <script>
 import Icon from "@/components/content/icon/Icon";
 import Scroll from "@/components/common/scroll/Scroll";
-import {mapState} from "vuex"
+import {goodsData} from "@/common/mixin";
 export default {
   name: "Menu",
   components: {
     Icon,
     Scroll
   },
-  props: {
-    goods: {
-      type: Array,
-      default() {
-        return []
-      }
-    }
-  },
-  computed: mapState([
-    'currentIndex',
-    "themeTops"
-  ]),
+  mixins: [goodsData],
   methods: {
     menuClick(index) {  //2.通过监听点击事件，将点击项目的标识index赋值给项目变量(另外还可以给点击动态改变颜色)
     this.$store.commit("changeIndex", index)
@@ -54,6 +43,7 @@ export default {
 
   .menu-item {
     display: flex;
+    padding: 0 12px;
     text-align: center;
     align-items: center;
     width: 80px;

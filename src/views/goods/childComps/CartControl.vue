@@ -14,6 +14,7 @@
 
 <script>
 import {mapState, mapActions, mapMutations, mapGetters} from "vuex"
+import {foodCount} from "@/common/mixin";
 export default {
   name: "CartControl",
   props: {
@@ -24,17 +25,12 @@ export default {
       }
     }
   },
+  mixins: [foodCount],
   computed: {
     ...mapState([
       'selectFood',
       'balls'
     ]),
-    foodCount() {
-      const payload = this.selectFood.filter(item => item.name === this.food.name)[0]
-      if (payload) {
-        return (payload.count);
-      }
-    }
   },
   methods: {
     ...mapGetters(['totalCount']),
@@ -60,8 +56,6 @@ export default {
           return;
         }
       }
-
-
     },
     removeCart() {
       const product = {}
@@ -88,7 +82,7 @@ export default {
 }
 
 .increase {
-  z-index: 10;
+  position: relative;
 }
 
 .decrease {

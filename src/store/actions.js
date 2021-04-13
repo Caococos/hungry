@@ -9,7 +9,7 @@ export default {
         resolve('食物数量+1')
       }else {
         payload.count = 1
-        context.commit('addCart', payload)
+        context.commit('addToCart', payload)
         resolve('添加了食物')
       }
     })
