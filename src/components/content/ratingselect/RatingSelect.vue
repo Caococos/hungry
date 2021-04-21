@@ -1,11 +1,11 @@
 <template>
   <div class="rating-select">
     <div class="rating-type border-1px">
-      <span class="block positive" @click="select(2,$event)" :class="{'active':selectType===2}">{{desc.all}}<span
-        class="count">{{ratings.length}}</span></span>
-      <span class="block positive" @click="select(0,$event)" :class="{'active':selectType===0}">{{desc.positive}}<span
+      <span class="block positive" @click="select(2)" :class="{'active':selectType===2}">{{desc.all}}<span
+        class="count">{{rating.length}}</span></span>
+      <span class="block positive" @click="select(0)" :class="{'active':selectType===0}">{{desc.positive}}<span
         class="count">{{positives.length}}</span></span>
-      <span class="block negative" @click="select(1,$event)" :class="{'active':selectType===1}">{{desc.negative}}<span
+      <span class="block negative" @click="select(1)" :class="{'active':selectType===1}">{{desc.negative}}<span
         class="count">{{negatives.length}}</span></span>
     </div>
     <div class="switch" @click="switchOnlyContent" :class="{'on': onlyContent}">
@@ -15,23 +15,20 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6">
-import {mapMutations, mapState} from "vuex";
+<script>
+import {mapMutations} from "vuex";
+import {ratingControl} from "@/common/mixin";
 
   const POSITIVE = 0;
   const NEGATIVE = 1;
 
   export default{
     props: {
-      ratings: {
+      rating: {
         type: Array,
         default() {
           return [];
         }
-      },
-      onlyContent: {
-        type: Boolean,
-        default: false
       },
       desc: {
         type: Object,
@@ -44,26 +41,26 @@ import {mapMutations, mapState} from "vuex";
         }
       }
     },
+    mixins: [ratingControl],
     computed: {
-      ...mapState(['selectType']),
       positives() {
-        return this.ratings.filter((rating) => {
+        return this.rating.filter((rating) => {
           return rating.rateType === POSITIVE;
         });
       },
       negatives() {
-        return this.ratings.filter((rating) => {
+        return this.rating.filter((rating) => {
           return rating.rateType === NEGATIVE;
         });
       }
     },
     methods: {
-      ...mapMutations(['changeType']),
+      ...mapMutations(['changeType', 'changeContent']),
       select(type) {
         this.changeType(type)  //改变store中的变量
       },
       switchOnlyContent() {
-        this.$emit('content-total', this.onlyContent);
+        this.changeContent()   //通过mutations在vuex中改变改变的值
       }
     }
   };
@@ -74,7 +71,7 @@ import {mapMutations, mapState} from "vuex";
   font-size: 20px;
   padding: 18px 0;
   margin: 0 18px;
-  border: 1px solid rgba(7, 17, 27, .1);
+  border-bottom: 1px solid rgba(7, 17, 27, .1);
 }
 .block {
   display: inline-block;

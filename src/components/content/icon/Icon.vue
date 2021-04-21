@@ -1,6 +1,7 @@
 <template>
   <div class="icon" :style="{color: color,
   backgroundColor: bgColor,
+  border: `1px solid ${borderColor}`,
   width: size + 'px',
   height: size + 'px'}">
     {{discountType}}
@@ -38,14 +39,19 @@ export default {
           this.bgColor = '#00b53a'
           return '特'
         case 3:
-          this.bgColor = '#8a0a82'
-          this.color = '#fff'
+          this.bgColor = '#fff'
+          this.color = '#8a0a82'
           return '票'
         case 4:
           this.bgColor = '#fff'
           this.color = '#03b43e'
           return '保'
       }
+    },
+    borderColor() {
+      if (this.color !== '#fff'){
+        return this.color
+      } else return this.bgColor
     }
   }
 }

@@ -1,15 +1,15 @@
 <template>
-  <div class="goods">
-    <menus @click.native="menuClick"/>
-    <foods ref="goods"/>
-    <shop-cart/>
-  </div>
+  <transition name="move">
+    <div class="goods">
+      <menus @click.native="menuClick"/>
+      <foods ref="goods"/>
+    </div>
+  </transition>
 </template>
 
 <script>
 import Menu from "@/views/goods/childComps/Menu";
 import Foods from "@/views/goods/childComps/Foods";
-import ShopCart from "@/views/goods/childComps/ShopCart";
 
 import {goodsData} from "@/common/mixin";
 
@@ -18,7 +18,6 @@ export default {
   components: {
     "menus": Menu,
     Foods,
-    ShopCart
   },
   mixins: [goodsData],
   methods: {
@@ -35,6 +34,13 @@ export default {
     width: 100%;
     height: 441px;
     overflow: hidden;
+  }
+  .move-enter-active {
+    transition: transform .5s;
+  }
+
+  .move-enter {
+    transform: translate3d(-100%, 0, 0);
   }
 
 </style>

@@ -49,6 +49,11 @@ export default {
     state.selectType = payload
   },
 
+  // 改变查看内容类型
+  changeContent(state) {
+    state.onlyContent = !state.onlyContent
+  },
+
   //小球动画
   changeShow (state, {index, isShow, el}) {
     state.balls[index].show = isShow

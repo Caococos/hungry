@@ -38,7 +38,8 @@ const state = {
   detailFood: {},
 
 //  展示评论的类型
-  selectType: 2
+  selectType: 2,      //默认为2 展示全部评论
+  onlyContent: true    //是否只看有内容的评价
 }
 
 const store = new Vuex.Store({

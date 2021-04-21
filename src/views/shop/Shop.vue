@@ -2,13 +2,19 @@
   <div class="shop">
     <v-header/>
     <main-nav-bar/>
-    <router-view/>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
+
+    <shop-cart/>
   </div>
 </template>
 
 <script>
 import Header from "@/components/content/header/Header";
 import MainNavBar from "@/components/content/mainNavBar/MainNavBar";
+import ShopCart from "@/views/goods/childComps/ShopCart";
+
 import {getGoodsData, getSellerData, getRatingsData} from "@/network/home";
 import {mapMutations} from "vuex";
 export default {
@@ -16,6 +22,7 @@ export default {
   components: {
     MainNavBar,
     'v-header': Header,   //因为header本身就是HTML标签，这里去个别名才能让组件渲染出来
+    ShopCart
   },
   methods: mapMutations(['getGoods', 'getSeller', 'getRatings']),
   created() {

@@ -41,3 +41,10 @@ export const detailData = {
     ...mapState(["detailFood"])
   }
 }
+
+export const ratingControl = {
+  computed: {
+    ...mapState(["selectType", "onlyContent"])   //Detail、RatingSelect需要的Vuex变量}
+  }
+}
+

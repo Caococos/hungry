@@ -1,6 +1,7 @@
 <template>
   <div ref="wrapper">
-    <div class="content"><slot></slot></div>
+    <div class="content" v-if="scrollT"><slot></slot></div>
+    <slot v-else></slot>
   </div>
 </template>
 
@@ -21,6 +22,10 @@ export default {
     pullUpLoad: {  //是否下拉加载更多
       type: Boolean,
       default: false
+    },
+    scrollT: {
+      type: Boolean,
+      default: true //如果是X轴滚动的话，需要传入false，并且在使用scroll组件的组件内动态给予宽度
     }
   },
   mounted() {
@@ -31,7 +36,11 @@ export default {
       // 值为0,1：都是不侦测实时的位置
       // 值为2：在手指滚动的过程中侦测，手指离开后的惯性滚动过程中不侦测
       // 3：只要是滚动，都侦测
-      pullUpLoad: this.pullUpLoad
+      pullUpLoad: this.pullUpLoad,
+      scrollX: true,
+      scrollY: this.scrollT,
+      eventPassThrough: this.vertical   //让垂直方向上的滚动忽略水平方向上的滚动
+
     })
     // 监听滚动事件
     if (this.probeType === 2 || this.probeType === 3) {
@@ -58,6 +67,13 @@ export default {
     },
     getScrollY() {  //离开路由页面保存当前浏览位置(因BScroll组件而使用)
       return this.scroll ? this.scroll.y : 0
+    }
+  },
+  computed: {
+    vertical() {
+      if (!this.scrollT) {
+        return 'vertical'
+      }
     }
   }
 }

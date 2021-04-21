@@ -9,6 +9,22 @@
   --line-height: 1.5;
 }
 
+/*解决移动端1px边框问题*/
+/*有考虑到旧版webkit的兼容性*/
+@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5) {
+  .border-1px::after {
+    -webkit-transform: scaleY(0.7);
+    transform: scaleY(0.7);
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) {
+  .border-1px::after {
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -41,18 +57,17 @@ body {
 }
 
 a {
+  /*自定义所有a标签文字s初始颜色*/
   color: var(--color-text);
   text-decoration: none;
 }
 
 /* 清除斜体 */
-
 em, i {
   font-style: normal;
 }
 
 /* 去掉小圆点 */
-
 li {
   list-style: none;
 }
