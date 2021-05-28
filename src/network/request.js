@@ -1,6 +1,14 @@
+/*
+ * @Descripttion: 
+ * @version: 1.0
+ * @Author: Zhihaot1
+ * @Date: 2021-05-20 20:52:36
+ * @LastEditors: Zhihaot1
+ * @LastEditTime: 2021-05-28 09:14:12
+ */
 import axios from "axios";
 import Vue from 'vue'
-export function  request(config) {
+export function request(config) {
   //创建实例
   const instance = axios.create({
     // 根路径

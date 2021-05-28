@@ -1,10 +1,18 @@
+<!--
+ * @Descripttion: 
+ * @version: 1.0
+ * @Author: Zhihaot1
+ * @Date: 2021-05-20 20:52:36
+ * @LastEditors: Zhihaot1
+ * @LastEditTime: 2021-05-28 09:11:19
+-->
 <template>
   <div class="picture">
     <h1 class="title">商家实景</h1>
     <scroll class="wrapper" ref="scroll" :scroll-t="false">
       <ul class="pic-list" :style="{width: 126 * pics.length - 6 + 'px'}">
-        <li class="pic-item" v-for="pic in pics">
-          <img :src="pic" alt="" width="120" height="90">
+        <li class="pic-item" v-for="(pic, index) in pics" :key="index">
+          <img :src="pic" alt="" width="120" height="90" @load="loadImg">
         </li>
       </ul>
     </scroll>
@@ -31,9 +39,9 @@ export default {
       console.log(this.$refs.scroll.scroll);
     })
   },
-  computed: {
-    ulWidth() {
-
+  methods: {
+    loadImg() {
+      this.$refs.scroll.refresh()
     }
   }
 }
@@ -62,5 +70,4 @@ export default {
     }
   }
 }
-
 </style>

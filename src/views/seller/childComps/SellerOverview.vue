@@ -3,7 +3,7 @@
     <div class="overview border-1px">
       <h1 class="title">{{seller.name}}</h1>
       <div class="desc">
-        <star-single :size="36" :score="seller.score"/>
+        <star-single :size="36" :score="seller.score" />
         <span class="text">({{seller.ratingCount}})</span>
         <span>月售{{seller.sellCount}}单</span>
       </div>
@@ -33,7 +33,7 @@
 
 <script>
 import StarSingle from "@/components/content/starSingle/StarSingle";
-import {loadFromLocal, saveToLocal} from "@/common/store";
+import { loadFromLocal, saveToLocal } from "@/common/store";
 export default {
   name: "SellerOverview",
   components: {
@@ -73,7 +73,7 @@ export default {
   position: relative;
   .overview {
     padding: 18px;
-    border-bottom: 1px solid rgb(7, 17, 27, .1);
+    border-bottom: 1px solid rgba(7, 17, 27, 0.1);
     .title {
       font-weight: 400;
       font-size: 14px;
@@ -95,7 +95,7 @@ export default {
     display: flex;
     justify-content: space-around;
     padding: 18px;
-    .content{
+    .content {
       flex: 1;
       font-size: 10px;
       text-align: center;
@@ -112,8 +112,8 @@ export default {
       }
     }
     .content:nth-child(2) {
-      border-left: 1px solid rgb(7, 17, 27, .1);
-      border-right: 1px solid rgb(7, 17, 27, .1);
+      border-left: 1px solid rgba(7, 17, 27, 0.1);
+      border-right: 1px solid rgba(7, 17, 27, 0.1);
     }
   }
 
@@ -140,7 +140,4 @@ export default {
     }
   }
 }
-
-
-
 </style>

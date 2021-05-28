@@ -1,6 +1,16 @@
+<!--
+ * @Descripttion: 
+ * @version: 1.0
+ * @Author: Zhihaot1
+ * @Date: 2021-05-20 20:52:36
+ * @LastEditors: Zhihaot1
+ * @LastEditTime: 2021-05-28 09:11:10
+-->
 <template>
   <div ref="wrapper">
-    <div class="content" v-if="scrollT"><slot></slot></div>
+    <div class="content" v-if="scrollT">
+      <slot></slot>
+    </div>
     <slot v-else></slot>
   </div>
 </template>
@@ -56,7 +66,7 @@ export default {
     }
   },
   methods: {
-    scrollTo(x, y, time=500) {
+    scrollTo(x, y, time = 500) {
       this.scroll && this.scroll.scrollTo(x, y, time)
     },
     finishPullUp() {
