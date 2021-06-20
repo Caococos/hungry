@@ -1,12 +1,21 @@
+<!--
+ * @Descripttion: 
+ * @version: 1.0
+ * @Author: Zhihaot1
+ * @Date: 2021-05-20 20:52:36
+ * @LastEditors: Zhihaot1
+ * @LastEditTime: 2021-06-20 09:39:16
+-->
 <template>
   <div class="shop">
-    <v-header/>
-    <main-nav-bar/>
+    <v-header />
+    <main-nav-bar />
+    <transition name="fade">
       <keep-alive>
-        <router-view/>
+        <router-view />
       </keep-alive>
-
-    <shop-cart/>
+    </transition>
+    <shop-cart />
   </div>
 </template>
 
@@ -15,8 +24,8 @@ import Header from "@/components/content/header/Header";
 import MainNavBar from "@/components/content/mainNavBar/MainNavBar";
 import ShopCart from "@/views/goods/childComps/ShopCart";
 
-import {getGoodsData, getSellerData, getRatingsData} from "@/network/home";
-import {mapMutations} from "vuex";
+import { getGoodsData, getSellerData, getRatingsData } from "@/network/home";
+import { mapMutations } from "vuex";
 export default {
   name: "Shop",
   components: {
@@ -38,11 +47,17 @@ export default {
     })
   },
   activated() {
-    this.$router.push({name: 'goods'})
+    this.$router.push({ name: 'goods' })
   }
 }
 </script>
 
 <style scoped>
+.fade-enter-active {
+  transition: all 1s;
+}
 
+.fade-enter {
+  opacity: 0;
+}
 </style>

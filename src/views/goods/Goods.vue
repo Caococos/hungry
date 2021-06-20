@@ -1,17 +1,23 @@
+<!--
+ * @Descripttion: 
+ * @version: 1.0
+ * @Author: Zhihaot1
+ * @Date: 2021-05-20 20:52:36
+ * @LastEditors: Zhihaot1
+ * @LastEditTime: 2021-06-20 09:37:16
+-->
 <template>
-  <transition name="move">
-    <div class="goods">
-      <menus @click.native="menuClick"/>
-      <foods ref="goods"/>
-    </div>
-  </transition>
+  <div class="goods">
+    <menus @click.native="menuClick" />
+    <foods ref="goods" />
+  </div>
 </template>
 
 <script>
 import Menu from "@/views/goods/childComps/Menu";
 import Foods from "@/views/goods/childComps/Foods";
 
-import {goodsData} from "@/common/mixin";
+import { goodsData } from "@/common/mixin";
 
 export default {
   name: "Goods",
@@ -29,18 +35,10 @@ export default {
 </script>
 
 <style scoped>
-  .goods {
-    display: flex;
-    width: 100%;
-    height: 441px;
-    overflow: hidden;
-  }
-  .move-enter-active {
-    transition: transform .5s;
-  }
-
-  .move-enter {
-    transform: translate3d(-100%, 0, 0);
-  }
-
+.goods {
+  display: flex;
+  width: 100%;
+  height: 441px;
+  overflow: hidden;
+}
 </style>

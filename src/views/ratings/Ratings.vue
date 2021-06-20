@@ -1,14 +1,20 @@
+<!--
+ * @Descripttion: 
+ * @version: 1.0
+ * @Author: Zhihaot1
+ * @Date: 2021-05-20 20:52:36
+ * @LastEditors: Zhihaot1
+ * @LastEditTime: 2021-06-20 09:37:05
+-->
 <template>
-  <transition name="move">
-    <div class="ratings">
-      <scroll ref="scroll" class="wrapper">
-        <comprehensive-rating/>
-        <split/>
-        <rating-select :rating="ratings"/>
-        <ratings-info/>
-      </scroll>
-    </div>
-  </transition>
+  <div class="ratings">
+    <scroll ref="scroll" class="wrapper">
+      <comprehensive-rating />
+      <split />
+      <rating-select :rating="ratings" />
+      <ratings-info />
+    </scroll>
+  </div>
 </template>
 
 <script>
@@ -18,8 +24,8 @@ import RatingsInfo from "@/views/ratings/childComps/RatingsInfo";
 import Split from "@/components/common/split/Split";
 import Scroll from "@/components/common/scroll/Scroll";
 
-import {ratingControl, ratingData} from "@/common/mixin";
-import {mapMutations} from "vuex";
+import { ratingControl, ratingData } from "@/common/mixin";
+import { mapMutations } from "vuex";
 export default {
   name: "Ratings",
   components: {
@@ -60,13 +66,4 @@ export default {
   height: 441px;
   overflow: hidden;
 }
-
-.move-enter-active {
-  transition: transform .5s;
-}
-
-.move-enter {
-  transform: translate3d(100%, 0, 0);
-}
-
 </style>

@@ -1,17 +1,23 @@
+<!--
+ * @Descripttion: 
+ * @version: 1.0
+ * @Author: Zhihaot1
+ * @Date: 2021-05-20 20:52:36
+ * @LastEditors: Zhihaot1
+ * @LastEditTime: 2021-06-20 09:36:43
+-->
 <template>
-  <transition name="move">
-    <div class="seller">
-      <scroll class="wrapper" ref="scroll">
-        <seller-overview :seller="seller"/>
-        <split/>
-        <seller-bulletin :seller="seller"/>
-        <split/>
-        <seller-picture :pics="seller.pics"/>
-        <split/>
-        <seller-info :infos="seller.infos"/>
-      </scroll>
-    </div>
-  </transition>
+  <div class="seller">
+    <scroll class="wrapper" ref="scroll">
+      <seller-overview :seller="seller" />
+      <split />
+      <seller-bulletin :seller="seller" />
+      <split />
+      <seller-picture :pics="seller.pics" />
+      <split />
+      <seller-info :infos="seller.infos" />
+    </scroll>
+  </div>
 </template>
 
 <script>
@@ -22,7 +28,7 @@ import SellerPicture from "@/views/seller/childComps/SellerPicture";
 import SellerInfo from "@/views/seller/childComps/SellerInfo";
 import Split from "@/components/common/split/Split";
 
-import {sellerData} from "@/common/mixin";
+import { sellerData } from "@/common/mixin";
 
 export default {
   name: "Seller",
@@ -49,13 +55,4 @@ export default {
   overflow: hidden;
   white-space: nowrap;
 }
-
-.move-enter-active {
-  transition: transform .5s;
-}
-
-.move-enter {
-  transform: translate3d(100%, 0, 0);
-}
-
 </style>
