@@ -38,7 +38,7 @@ export default {
 .goods {
   display: flex;
   width: 100%;
-  height: 441px;
+  height: calc(100vh - 41px - 137.3px - 48px);
   overflow: hidden;
 }
 </style>

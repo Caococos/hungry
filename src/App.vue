@@ -23,4 +23,8 @@ export default {
 
 <style>
 @import "assets/css/index.css";
+#app {
+  height: 100vh;
+  overflow: hidden;
+}
 </style>

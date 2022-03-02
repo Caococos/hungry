@@ -4,6 +4,7 @@ const express = require('express')
 var app = express();
 
 var appData = require('./data.json');
+console.log(appData);
 var seller = appData.seller;
 var goods = appData.goods;
 var ratings = appData.ratings;

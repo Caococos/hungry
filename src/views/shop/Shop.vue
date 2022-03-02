@@ -30,7 +30,7 @@ export default {
   name: "Shop",
   components: {
     MainNavBar,
-    'v-header': Header,   //因为header本身就是HTML标签，这里去个别名才能让组件渲染出来
+    'v-header': Header,   //因为header本身就是HTML标签，这里取个别名才能让组件渲染出来
     ShopCart
   },
   methods: mapMutations(['getGoods', 'getSeller', 'getRatings']),
@@ -53,6 +53,9 @@ export default {
 </script>
 
 <style scoped>
+.shop {
+  height: 100%;
+}
 .fade-enter-active {
   transition: all 1s;
 }
